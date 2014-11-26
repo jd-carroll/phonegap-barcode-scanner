@@ -47,9 +47,21 @@ var app = {
         console.log('Received Event: ' + id);
 		
 		var scanner = document.getElementById('scanner');
-		scanner.addEventListener('click', function() {
-			listeningElement.setAttribute('style', 'display:block;');
-			receivedElement.setAttribute('style', 'display:none;');
+		scanner.addEventListener('click', function(event) {
+			cordova.plugins.barcodeScanner.scan(
+				console.log('Reveived event: ' + event);
+			    function (result) {
+					console.log('Received result: ' + result);
+				    alert("We got a barcode\n" +
+						"Result: " + result.text + "\n" +
+						"Format: " + result.format + "\n" +
+						"Cancelled: " + result.cancelled);
+				}, 
+				function (error) {
+					console.error('Received error: ' + error);
+					alert("Scanning failed: " + error);
+				}
+			);
 		});	
     }
 };

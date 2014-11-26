@@ -11,6 +11,10 @@
                         {
                             "xml": "<feature name=\"BarcodeScanner\"><param name=\"android-package\" value=\"com.phonegap.plugins.barcodescanner.BarcodeScanner\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -533,6 +537,9 @@
     },
     "installed_plugins": {
         "com.phonegap.plugins.barcodescanner": {
+            "PACKAGE_NAME": "com.artecha.barcodescanner"
+        },
+        "org.apache.cordova.device": {
             "PACKAGE_NAME": "com.artecha.barcodescanner"
         }
     },
