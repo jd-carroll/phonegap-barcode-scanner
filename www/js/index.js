@@ -45,6 +45,12 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+		
+		var scanner = document.getElementById('scanner');
+		scanner.addEventListener('click', function() {
+			listeningElement.setAttribute('style', 'display:block;');
+			receivedElement.setAttribute('style', 'display:none;');
+		});	
     }
 };
 
