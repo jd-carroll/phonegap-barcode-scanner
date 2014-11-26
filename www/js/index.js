@@ -48,20 +48,24 @@ var app = {
 		
 		var scanner = document.getElementById('scanner');
 		scanner.addEventListener('click', function(event) {
-			cordova.plugins.barcodeScanner.scan(
-				console.log('Reveived event: ' + event);
-			    function (result) {
-					console.log('Received result: ' + result);
-				    alert("We got a barcode\n" +
-						"Result: " + result.text + "\n" +
-						"Format: " + result.format + "\n" +
-						"Cancelled: " + result.cancelled);
-				}, 
-				function (error) {
-					console.error('Received error: ' + error);
-					alert("Scanning failed: " + error);
-				}
-			);
+			console.log('Reveived event: ' + event);
+			try {
+				cordova.plugins.barcodeScanner.scan(
+					function (result) {
+						console.log('Received result: ' + result);
+						alert("We got a barcode\n" +
+							"Result: " + result.text + "\n" +
+							"Format: " + result.format + "\n" +
+							"Cancelled: " + result.cancelled);
+					}, 
+					function (error) {
+						console.error('Received error: ' + error);
+						alert("Scanning failed: " + error);
+					}
+				);
+			} catch(err) {
+				alert('Error while starting: ' + err);
+			}
 		});	
     }
 };

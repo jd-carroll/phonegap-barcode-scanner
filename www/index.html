@@ -27,8 +27,42 @@
         <link rel="stylesheet" type="text/css" href="css/index.css" />
 		<link rel="stylesheet" type="text/css" href="css/ionicons.css" />
         <title>Hello World</title>
+		
+        <script type="text/javascript">
+            var GLOBAL_onReady = false;
+
+            console.log('loading front script');
+            // Required scripts to add after deviceready
+            var require_scripts = [
+//                {
+//                    src: "src/lib/require.js",
+//                    attr: [{
+//                        "data-main" : "src/main"
+//                    }]
+//                }
+            ];
+
+            function onLoad() {
+                console.log('on load');
+
+                // browser?
+                if (!navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
+                    // browser
+                    GLOBAL_onReady = true;
+                } else {
+					// wait for deviceready from cordova
+                    console.log('wait for deviceready from cordova');
+                    document.addEventListener("deviceready", function(){
+                        // alert('deviceready listener fired!');
+                        GLOBAL_onReady = true;
+                        addScripts(require_scripts);
+                    }, false);
+                }
+            }
+
+        </script>
     </head>
-    <body>
+    <body onload="onLoad()">
         <div class="app">
             <h1>Apache Cordova</h1>
             <div id="deviceready" class="blink">
